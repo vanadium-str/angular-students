@@ -7,7 +7,7 @@ export interface IStudent{
     surname: string,
     email: string,
     phone: string,
-    courses: ICourse[] | MatTableDataSource<ICourse>
+    courses?: ICourse[] | MatTableDataSource<ICourse>
 }
 
 export interface IStudentState {

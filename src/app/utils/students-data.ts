@@ -61,14 +61,13 @@ export const students: IStudent[] = [
         }
       ]
     },
-    // {
-    //     id: 3,
-    //     name: 'Kurtis',
-    //     surname: 'Weissnat',
-    //     email: 'Telly.Hoeger@billy.biz',
-    //     phone: '210.067.6132',
-    //     courses: []
-    // },
+    {
+        id: 3,
+        name: 'Kurtis',
+        surname: 'Weissnat',
+        email: 'Telly.Hoeger@billy.biz',
+        phone: '210.067.6132'
+    },
     {
         id: 4,
         name: 'Nicholas',
