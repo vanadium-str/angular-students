@@ -1,0 +1,14 @@
+<div 
+    class="my-10 mx-20 flex justify-center items-center"
+    *ngIf="(showData$ | async) === false"
+>
+    <button
+        class="mt-5 border-white rounded-xl bg-gray-700 w-40 h-10 text-white"
+        (click)="getData(); showData()"
+    >
+        Show students
+    </button>
+</div>
+<app-students-table
+    *ngIf="showData$ | async"
+></app-students-table>
