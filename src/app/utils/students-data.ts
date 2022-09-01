@@ -1,98 +1,43 @@
+import { faker } from '@faker-js/faker';
+import { ICourse } from '../models/model-course';
 import { IStudent } from "../models/model-student";
 
-export const students: IStudent[] = [
-    {
-      id: 1,
-      name: 'Aaron',
-      surname: 'Dietrich',
-      email: 'Sincere@april.biz',
-      phone: '1-770-736-8031',
-      courses: [
-        {
-          courseId: 1,
-          title: 'Biology',
-          teacher: 'Leanne Graham',
-          amountHours: 100
-        },
-        {
-          courseId: 2,
-          title: 'Phylosophy',
-          teacher: 'Ervin Howell',
-          amountHours: 150
-        },
-        {
-            courseId: 4,
-            title: 'History',
-            teacher: 'Clementine Bauch',
-            amountHours: 130
-        },
-        {
-            courseId: 5,
-            title: 'English',
-            teacher: 'Patricia Lebsack',
-            amountHours: 150
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: 'Dennis',
-      surname: 'Schulist',
-      email: 'Lucio_Hettinger@annie.ca',
-      phone: '(254)954-1289',
-      courses: [
-        {
-          courseId: 2,
-          title: 'Phylosophy',
-          teacher: 'Ervin Howell',
-          amountHours: 150
-        },
-        {
-          courseId: 3,
-          title: 'Math',
-          teacher: 'Victor Plains',
-          amountHours: 125
-        },
-        {
-            courseId: 5,
-            title: 'English',
-            teacher: 'Patricia Lebsack',
-            amountHours: 150
-        }
-      ]
-    },
-    {
-        id: 3,
-        name: 'Kurtis',
-        surname: 'Weissnat',
-        email: 'Telly.Hoeger@billy.biz',
-        phone: '210.067.6132'
-    },
-    {
-        id: 4,
-        name: 'Nicholas',
-        surname: 'Runolfsdottir',
-        email: 'Sherwood@rosamond.me',
-        phone: '586.493.6943',
-        courses: [
-            {
-                courseId: 2,
-                title: 'Phylosophy',
-                teacher: 'Ervin Howell',
-                amountHours: 150
-            },
-            {
-                courseId: 3,
-                title: 'Math',
-                teacher: 'Victor Plains',
-                amountHours: 125
-            },
-            {
-                courseId: 5,
-                title: 'English',
-                teacher: 'Patricia Lebsack',
-                amountHours: 150
-            }
-        ]
+export const students: IStudent[] = [];
+
+  function createRandomUser(): IStudent {
+    return {
+      id: faker.datatype.number(100),
+      name: faker.name.firstName(),
+      surname: faker.name.lastName(),
+      email: faker.internet.email(),
+      phone: faker.phone.number(),
+      courses: createCourses()
+    };
+  }
+
+  function createRandomCourse(): ICourse {
+   return {
+     courseId: faker.datatype.number(100),
+     title: faker.lorem.sentence(4),
+     teacher: faker.name.fullName(),
+     amountHours: faker.datatype.number({ min: 100, max: 200 }),
+   };
+  }
+
+  function getRandomInt(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function createCourses(): ICourse[] {
+    let courses = [];
+    for(let i = 0; i < getRandomInt(1, 10); i++){    
+      courses.push(createRandomCourse());
     }
-  ]
+    return courses;
+  }
+
+  Array.from({ length: 10 }).forEach(() => {
+    students.push(createRandomUser());
+  });
