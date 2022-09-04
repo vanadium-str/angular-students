@@ -1,8 +1,7 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 body { 
   font-family: Roboto, Arial, sans-serif;

@@ -6,6 +6,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { ICourse } from 'src/app/models/model-course';
 import { getStudentsSelector } from 'src/app/store/selectors/get-students.selectors';
+import { delay, timeout } from 'rxjs';
+import { GetStudents } from 'src/app/store/actions/get-students.actions';
 
 @Component({
   selector: 'app-students-table',
@@ -31,6 +33,7 @@ export class StudentsTableComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {    
+    this.store.dispatch(new GetStudents);
     this.students$.subscribe(data => {
       this.students = data;
       console.log(this.students);
